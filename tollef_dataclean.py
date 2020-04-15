@@ -34,7 +34,7 @@ if filename != "none":
 
 text = preco_2
 
-genre = "mz"
+genre = "nz"
 # The Ontonotes data for training the model contains text from several sources
 # of very different styles. You need to specify the most suitable one out of:
 # "bc": broadcast conversation
@@ -74,8 +74,9 @@ for line in open('experiments.conf'):
 tokenizer = tokenization.FullTokenizer(vocab_file="cased_config_vocab/vocab.txt", do_lower_case=False)
 subtoken_num = 0
 for sent_num, line in enumerate(text):
-    raw_tokens = line.split()
-    tokens = tokenizer.tokenize(line)
+    raw_tokens = line
+    to_sent = ' '.join(line)
+    tokens = tokenizer.tokenize(to_sent)
     if len(tokens) + len(data['sentences'][-1]) >= max_segment:
         data['sentences'][-1].append("[SEP]")
         data['sentences'].append(["[CLS]"])

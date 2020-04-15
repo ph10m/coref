@@ -224,7 +224,8 @@ def minimize_language(language, labels, stats, vocab_file, seg_len, input_dir, o
   minimize_partition("test", language, "v4_gold_conll", labels, stats, tokenizer, seg_len, input_dir, output_dir)
 
 if __name__ == "__main__":
-  vocab_file = sys.argv[1]
+  segmentlen = int(sys.argv[1])
+  vocab_file = "cased_config_vocab/vocab.txt"
   input_dir = sys.argv[2]
   output_dir = sys.argv[3]
   do_lower_case = sys.argv[4].lower() == 'true'
@@ -233,8 +234,8 @@ if __name__ == "__main__":
   stats = collections.defaultdict(int)
   if not os.path.isdir(output_dir):
     os.mkdir(output_dir)
-  for seg_len in [128, 256, 384, 512]:
-    minimize_language("english", labels, stats, vocab_file, seg_len, input_dir, output_dir, do_lower_case)
+  # for seg_len in [128, 256, 384, 512]:
+  minimize_language("english", labels, stats, vocab_file, segmentlen, input_dir, output_dir, do_lower_case)
     # minimize_language("chinese", labels, stats, vocab_file, seg_len)
     # minimize_language("es", labels, stats, vocab_file, seg_len)
     # minimize_language("arabic", labels, stats, vocab_file, seg_len)
