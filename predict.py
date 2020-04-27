@@ -13,10 +13,10 @@ if __name__ == "__main__":
   log_dir = config["log_dir"]
 
   # Input file in .jsonlines format.
-  input_filename = sys.argv[2]
+  input_filename = sys.argv[1]
 
   # Predictions will be written to this file in .jsonlines format.
-  output_filename = sys.argv[3]
+  output_filename = sys.argv[2]
 
   model = util.get_model(config)
   saver = tf.train.Saver()

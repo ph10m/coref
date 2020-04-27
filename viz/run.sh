@@ -1,3 +1,3 @@
 #!/bin/bash
 
-python -m http.server 6006
+python3 -m http.server 6006
